@@ -6,3 +6,15 @@ html {
   padding: 0;
   background-color: #171777;
 }
+
+section {
+  margin: 280px auto;
+  height: 600px;
+  background-color: rgba(240, 255, 255, 0.336);
+  border-radius: 2em;
+  color: white;
+}
+
+footer {
+  margin-top: 385px;
+}

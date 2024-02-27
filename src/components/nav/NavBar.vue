@@ -1,6 +1,6 @@
 <template>
-  <nav class="m-auto navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25 p-4">
-    <div class="col-11 container-fluid text-white">
+  <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25">
+    <div class="col-10 container-fluid text-white">
       <a class="navbar-brand" href="/">LOGO</a>
       <button
         class="navbar-toggler"
@@ -68,4 +68,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+nav {
+  height: 120px;
+  backdrop-filter: blur(10px);
+}
+</style>
