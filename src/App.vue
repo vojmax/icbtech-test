@@ -1,10 +1,10 @@
 <script setup>
-import DropdownComponent from './components/Dropdown.vue'
+import NavBar from './components/nav/NavBar.vue'
 </script>
 
 <template>
   <main>
-    <DropdownComponent />
+    <NavBar />
   </main>
 </template>
 
