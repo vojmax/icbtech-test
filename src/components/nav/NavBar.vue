@@ -1,7 +1,9 @@
 <template>
   <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25">
     <div class="container-fluid text-white">
-      <a class="navbar-brand" href="/">LOGO</a>
+      <a class="navbar-brand" href="/">
+        <img src="../../assets/nav-logo.svg" />
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -28,7 +30,12 @@
             <a class="nav-link" href="/contact">Kontakt</a>
           </li>
           <div>
-            <select v-model="selectedCity" class="form-select" aria-label="Default select example">
+            <select
+              name="select-city"
+              v-model="selectedCity"
+              class="form-select"
+              aria-label="Default select example"
+            >
               <option v-for="city in cities" :key="city.id">
                 {{ city.city_name.sr }}
               </option>

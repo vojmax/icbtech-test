@@ -2,7 +2,9 @@
   <footer class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-2">
-        <a>Logo</a>
+        <a>
+          <img src="../assets/footer-logo.svg" alt="logo" />
+        </a>
       </div>
       <div class="col-2">
         <span>Email: </span>
