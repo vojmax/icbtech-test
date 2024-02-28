@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 #app,
 body,
 html {
+  font-family: 'Rubik', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,7 +12,10 @@ html {
 section {
   margin: 280px auto;
   height: 700px;
-  background-color: rgb(163, 163, 163);
   border-radius: 2em;
   color: white;
+}
+
+h2 {
+  font-weight: 300;
 }

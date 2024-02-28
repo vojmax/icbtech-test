@@ -1,7 +1,13 @@
 <template>
-  <section class="container">
-    <h1 class="text-center">About Component</h1>
-    <p>Welcome to the About page!</p>
+  <section class="container-fluid col-10">
+    <div class="row mb-4">
+      <h2 class="text-center">About</h2>
+    </div>
+    <div class="map container-fluid">
+      <div class="row">
+        <div class="col-8"></div>
+      </div>
+    </div>
   </section>
 </template>
 

@@ -1,6 +1,13 @@
 <template>
-  <section class="container">
-    <h1 class="text-center">Contact Component</h1>
+  <section class="container-fluid col-10">
+    <div class="row mb-4">
+      <h2 class="text-center">Contact</h2>
+    </div>
+    <div class="map container-fluid">
+      <div class="row">
+        <div class="col-8"></div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -12,10 +19,5 @@ export default {
 </script>
 
 <style scoped>
-div {
-  margin: 160px auto;
-  height: 600px;
-  background-color: rgba(240, 255, 255, 0.301);
-}
 /* Your CSS code here */
 </style>

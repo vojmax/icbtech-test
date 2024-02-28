@@ -1,6 +1,11 @@
 <template>
-  <section class="container">
-    <h1 class="text-center">HERO Component</h1>
+  <section class="container-fluid col-10">
+    <div class="row">
+      <div class="col-6">
+        <h1>Map Component</h1>
+      </div>
+      <div class="col-6"></div>
+    </div>
   </section>
 </template>
 
@@ -13,7 +18,7 @@ export default {
 
 <style scoped>
 section {
-  margin: 228px auto;
+  margin: 228px auto 0;
   height: 600px;
 }
 /* Your CSS code here */
