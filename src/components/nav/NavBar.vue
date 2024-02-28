@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
             <a class="nav-link" href="/">Početna Stranica</a>
           </li>
@@ -29,18 +29,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Kontakt</a>
           </li>
-          <div>
-            <select
-              name="select-city"
-              v-model="selectedCity"
-              class="form-select"
-              aria-label="Default select example"
-            >
+          <div class="select-city">
+            <select v-model="selectedCity" class="form-select">
               <option v-for="city in cities" :key="city.id">
                 {{ city.city_name.sr }}
               </option>
             </select>
           </div>
+          <LanguagePicker />
         </ul>
       </div>
     </div>
@@ -49,6 +45,7 @@
 
 <script>
 import { ref } from 'vue'
+import LanguagePicker from './LanguagePicker.vue'
 
 export default {
   name: 'NavBar',
@@ -71,7 +68,8 @@ export default {
     }
     load()
     return { cities, error, selectedCity }
-  }
+  },
+  components: { LanguagePicker }
 }
 </script>
 
@@ -83,4 +81,27 @@ nav {
 .container-fluid {
   margin: 0 7em;
 }
+
+.nav-item {
+  color: white;
+  padding: 1em 1em;
+}
+.form-select {
+  background-color: black;
+  background-image: url('data:image/svg+xml;utf8,<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.9997 5.1714L11.9495 0.22168L13.3637 1.63589L6.9997 7.9999L0.635742 1.63589L2.04996 0.22168L6.9997 5.1714Z" fill="white"/></svg>');
+  color: white;
+  padding: 0.5em 3em 0.5em 2em;
+  border-radius: 0;
+  border: 0;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+.form-select option {
+  color: white;
+  border: 1px solid white;
+  background-color: rgb(131, 131, 131);
+  padding: 1em;
+}
+
+/* add custom styles to select and options */
 </style>
