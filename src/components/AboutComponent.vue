@@ -1,5 +1,5 @@
 <template>
-  <section class="container col-11">
+  <section class="container">
     <h1 class="text-center">About Component</h1>
     <p>Welcome to the About page!</p>
   </section>

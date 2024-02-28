@@ -1,5 +1,5 @@
 <template>
-  <section class="container col-11 mt-5 m-auto">
+  <section class="container mt-5 m-auto">
     <h1 class="text-center">Map Component</h1>
   </section>
 </template>

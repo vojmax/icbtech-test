@@ -1,21 +1,30 @@
 <script setup>
 import NavBar from './components/nav/NavBar.vue'
-import HeroComponent from './components/nav/HeroComponent.vue'
-import MapComponent from './components/nav/MapComponent.vue'
-import AboutComponent from './components/nav/AboutComponent.vue'
-import ContactComponent from './components/nav/ContactComponent.vue'
-import FooterComponent from './components/nav/FooterComponent.vue'
+import HeroComponent from './components/HeroComponent.vue'
+import MapComponent from './components/MapComponent.vue'
+import AboutComponent from './components/AboutComponent.vue'
+import ContactComponent from './components/ContactComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
+import BackgroundComponent from './components/BackgroundComponent.vue'
 </script>
 
 <template>
   <main>
     <NavBar />
-    <HeroComponent />
-    <MapComponent />
-    <AboutComponent />
-    <ContactComponent />
-    <FooterComponent />
+    <div class="content">
+      <HeroComponent />
+      <MapComponent />
+      <AboutComponent />
+      <ContactComponent />
+      <FooterComponent />
+    </div>
+    <BackgroundComponent />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.content {
+  position: relative;
+  z-index: 1;
+}
+</style>

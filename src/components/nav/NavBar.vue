@@ -1,6 +1,6 @@
 <template>
   <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25">
-    <div class="col-10 container-fluid text-white">
+    <div class="container-fluid text-white">
       <a class="navbar-brand" href="/">LOGO</a>
       <button
         class="navbar-toggler"
@@ -72,5 +72,8 @@ export default {
 nav {
   height: 120px;
   backdrop-filter: blur(10px);
+}
+.container-fluid {
+  margin: 0 7em;
 }
 </style>
