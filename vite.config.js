@@ -15,5 +15,8 @@ export default defineConfig({
     devServer: {
       headers: { 'Access-Control-Allow-Origin': '*' }
     }
+  },
+  optimizeDeps: {
+    include: ['@fawmi/vue-google-maps', 'fast-deep-equal']
   }
 })

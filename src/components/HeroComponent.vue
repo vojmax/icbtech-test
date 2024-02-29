@@ -13,15 +13,33 @@
           <button class="welcome_button">Tudjon meg többet</button>
         </div>
         <div class="col-6">
-          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="4000">
+              <div class="carousel-item active">
                 <img :src="imageOne" class="d-block w-100" alt="..." />
               </div>
-              <div class="carousel-item" data-bs-interval="4000">
+              <div class="carousel-item">
                 <img :src="imageTwo" class="d-block w-100" alt="..." />
               </div>
             </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </div>
@@ -66,12 +84,12 @@ section {
   font-weight: 500;
   color: white;
   background-color: transparent;
-  background-image: linear-gradient(
-    90deg,
-    rgba(60, 173, 255, 0.15),
-    rgba(60, 173, 255, 0),
-    rgba(249, 37, 101, 0),
-    rgba(249, 37, 101, 0.3)
+  background: linear-gradient(
+    273.22deg,
+    rgba(60, 173, 255, 0.15) 0%,
+    rgba(60, 173, 255, 0) 34.9%,
+    rgba(249, 37, 101, 0) 63.54%,
+    rgba(249, 37, 101, 0.3) 100%
   );
   border: 2px solid white;
   border-radius: 8px;
@@ -79,12 +97,43 @@ section {
   cursor: pointer;
 }
 .welcome_button:hover {
-  background-image: linear-gradient(
-    90deg,
-    rgba(60, 173, 255, 0.4),
-    rgba(60, 173, 255, 0),
-    rgba(249, 37, 101, 0),
-    rgba(249, 37, 101, 0.8)
+  padding: 0.65em 1.55em;
+  border: 1px solid white;
+  background: linear-gradient(
+    273.22deg,
+    rgba(60, 173, 255, 0.4) 7.29%,
+    rgba(60, 173, 255, 0) 44.79%,
+    rgba(249, 37, 101, 0) 50%,
+    rgba(249, 37, 101, 0.8) 92.71%
   );
 }
 </style>
+
+<!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img :src="imageOne" class="d-block w-100" alt="..." />
+              </div>
+              <div class="carousel-item">
+                <img :src="imageTwo" class="d-block w-100" alt="..." />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div> -->
