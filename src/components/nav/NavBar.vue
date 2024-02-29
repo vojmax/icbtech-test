@@ -87,7 +87,7 @@ nav {
   padding: 1em 1em;
 }
 .form-select {
-  background-color: black;
+  background-color: transparent;
   background-image: url('data:image/svg+xml;utf8,<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.9997 5.1714L11.9495 0.22168L13.3637 1.63589L6.9997 7.9999L0.635742 1.63589L2.04996 0.22168L6.9997 5.1714Z" fill="white"/></svg>');
   color: white;
   padding: 0.5em 3em 0.5em 2em;

@@ -1,22 +1,30 @@
 <template>
   <div>
-    <span class="active">SR</span>
-    <span>HU</span>
+    <span :class="{ active: selectedLanguage === 'sr' }" @click="selectLanguage('sr')">SR</span>
+    <span :class="{ active: selectedLanguage === 'hu' }" @click="selectLanguage('hu')">HU</span>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { emit } from 'vue'
+import { useLangStore } from '@/store/LangStore'
 
 export default {
   name: 'LanguagePicker',
   setup() {
-    const lang = ref('sr')
+    const { language, setLanguage } = useLangStore()
 
-    emit('change', lang.value)
+    const selectedLanguage = ref(language)
 
-    return { lang }
+    const selectLanguage = (lang) => {
+      selectedLanguage.value = lang
+      setLanguage(lang)
+    }
+
+    return {
+      selectedLanguage,
+      selectLanguage
+    }
   }
 }
 </script>

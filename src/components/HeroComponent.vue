@@ -1,30 +1,35 @@
 <template>
   <section class="container-fluid col-10">
-    <div class="row">
-      <div class="col-6">
-        <h1 ref="title">HeroComponent</h1>
+    <div v-if="welcomePage">
+      <div class="row">
+        <div v-if="language === 'sr'" class="col-6">
+          <div v-html="welcomePage.title.sr"></div>
+          <div v-html="welcomePage.welcome_text.sr"></div>
+        </div>
+        <div v-if="language === 'hu'" class="col-6">
+          <div v-html="welcomePage.title.hu"></div>
+          <div v-html="welcomePage.welcome_text.hu"></div>
+        </div>
+        <div class="col-6"></div>
       </div>
-      <div class="col-6"></div>
     </div>
+    <div v-else>loading</div>
   </section>
 </template>
 
 <script>
 import { ref } from 'vue'
+import { useLangStore } from '../store/LangStore'
+import { storeToRefs } from 'pinia'
 
 export default {
   name: 'HeroComponent',
-  props: {
-    lang: String
-  },
 
   setup() {
+    const { language } = storeToRefs(useLangStore())
     const welcomePage = ref()
-    // const title = ref()
-    // const image= ref()
-    // const welcomeText = ref()
-    // const button = ref()
     const error = ref(null)
+
     const load = async () => {
       try {
         const data = await fetch('https://ledbilbordi.web.icbtech.net/api/v1/welcome-page')
@@ -39,7 +44,8 @@ export default {
       }
     }
     load()
-    return { welcomePage, error }
+
+    return { welcomePage, language, error }
   }
 }
 </script>
