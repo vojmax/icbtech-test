@@ -9,16 +9,3 @@ export const useLangStore = defineStore('LangStore', () => {
   }
   return { language, setLanguage }
 })
-
-// const useLangStore = defineStore('LangStore', {
-//   state: () => ({
-//     language: 'sr'
-//   }),
-//   actions: {
-//     setLanguage(lang) {
-//       this.language = lang
-//     }
-//   }
-// })
-
-// export  useLangStore

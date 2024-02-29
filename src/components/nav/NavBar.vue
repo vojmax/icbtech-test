@@ -29,10 +29,15 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Kontakt</a>
           </li>
-          <div class="select-city">
-            <select v-model="selectedCity" class="form-select">
+          <div v-if="cities" class="select-city">
+            <select class="form-select">
               <option v-for="city in cities" :key="city.id">
-                {{ city.city_name.sr }}
+                <div v-if="language === 'sr'">
+                  {{ city.city_name.sr }}
+                </div>
+                <div v-if="language === 'hu'">
+                  {{ city.city_name.hu }}
+                </div>
               </option>
             </select>
           </div>
@@ -44,30 +49,22 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { useCitiesStore } from '../../store/CitiesStore'
+import { useLangStore } from '@/store/LangStore'
 import LanguagePicker from './LanguagePicker.vue'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
 export default {
   name: 'NavBar',
   setup() {
-    const cities = ref([])
-    const selectedCity = ref('Subotica')
-    const error = ref(null)
-    const load = async () => {
-      try {
-        const data = await fetch('https://ledbilbordi.web.icbtech.net/api/v1/city-list')
-        if (!data.ok) {
-          error.value = 'There was an error'
-          console.log(error.value)
-        }
-        cities.value = await data.json()
-        console.log(cities)
-      } catch (err) {
-        error.value = err.message
-      }
-    }
-    load()
-    return { cities, error, selectedCity }
+    const { language } = storeToRefs(useLangStore())
+
+    const placeholder = ref('Odaberite grad')
+
+    const { cities } = storeToRefs(useCitiesStore())
+
+    return { cities, language, placeholder }
   },
   components: { LanguagePicker }
 }
