@@ -17,5 +17,5 @@ export const useCitiesStore = defineStore('CitiesStore', () => {
   onMounted(() => {
     fetchCities()
   })
-  return { cities, fetchCities }
+  return { cities }
 })
