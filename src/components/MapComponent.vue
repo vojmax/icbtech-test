@@ -8,8 +8,7 @@
         <div class="row">
           <div class="col-8">
             <GoogleMap
-              :styles="theme"
-              api-key="AIzaSyBR010ioxxcGDSoeviQCjTsHF-gylsu-z4"
+              :api-key="apiKey"
               style="width: 100%; height: 500px"
               :center="center"
               :zoom="15"
@@ -38,13 +37,15 @@ export default {
   components: { GoogleMap, GoogleMarker },
 
   setup() {
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+
     const { language } = storeToRefs(useLangStore())
 
-    const theme = ref('dark')
+    const theme = ref('aubergine')
 
     const center = { lat: 40.689247, lng: -74.044502 }
 
-    return { language, center, theme }
+    return { language, center, theme, apiKey }
   }
 }
 </script>
@@ -53,7 +54,6 @@ export default {
 .map {
   height: 610px;
   padding: 36px;
-
   background-image: linear-gradient(90deg, #02020f00, hsla(240, 76%, 3%, 0.75));
   border-radius: 32px;
 }
