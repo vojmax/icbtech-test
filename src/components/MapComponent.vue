@@ -1,24 +1,22 @@
 <template>
-  <section class="container-fluid col-10">
+  <section class="container-fluid col-10 p-0">
     <div v-if="language">
       <div class="row mb-4">
         <h2 class="text-center">Map Component</h2>
       </div>
-      <div class="map container-fluid">
-        <div class="row">
-          <div class="col-8">
-            <GoogleMap
-              :api-key="apiKey"
-              style="width: 100%; height: 500px"
-              :center="center"
-              :zoom="15"
-            >
-              <GoogleMarker :options="{ position: center }" />
-            </GoogleMap>
-          </div>
-          <div class="col-4">
-            <h3>{{ language }}</h3>
-          </div>
+      <div class="row map">
+        <div class="col-8">
+          <GoogleMap
+            :api-key="apiKey"
+            style="width: 100%; height: 500px"
+            :center="center"
+            :zoom="15"
+          >
+            <GoogleMarker :options="{ position: center }" />
+          </GoogleMap>
+        </div>
+        <div class="col-4">
+          <h3>{{ language }}</h3>
         </div>
       </div>
     </div>
