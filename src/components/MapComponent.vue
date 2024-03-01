@@ -1,8 +1,11 @@
 <template>
   <section class="container-fluid col-10 p-0">
     <div v-if="language">
-      <div class="row mb-4">
-        <h2 class="text-center">Map Component</h2>
+      <div v-if="language === 'sr'" class="row mb-4">
+        <h2 class="text-center">Mapa</h2>
+      </div>
+      <div v-if="language === 'hu'" class="row mb-4">
+        <h2 class="text-center">Térkép</h2>
       </div>
       <div class="row map">
         <div class="col-8">
@@ -49,6 +52,11 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
 .map {
   height: 610px;
   padding: 36px;

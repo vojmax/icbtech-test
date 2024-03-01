@@ -92,6 +92,7 @@ nav {
   border: 0;
   border-left: 1px solid white;
   border-right: 1px solid white;
+  width: 160px;
 }
 .form-select option {
   color: white;

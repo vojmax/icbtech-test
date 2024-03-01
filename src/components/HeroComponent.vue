@@ -6,7 +6,7 @@
         <div class="welcome_text" v-html="welcome.welcome_text.sr"></div>
         <button class="welcome_button">Saznajte više</button>
       </div>
-      <div v-if="language === 'hu'" class="col-6">
+      <div v-if="language === 'hu'" class="col-6 p-0">
         <div class="welcome_title" v-html="welcome.title.hu"></div>
         <div class="welcome_text" v-html="welcome.welcome_text.hu"></div>
         <button class="welcome_button">Tudjon meg többet</button>
@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 section {
-  margin: 150px auto 0;
+  margin: 130px auto 0;
   height: 600px;
 }
 .carousel-inner {
@@ -78,9 +78,14 @@ section {
   height: 600px;
   width: 800px;
 }
+.welcome_title {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 0.5em;
+}
 .welcome_text {
   margin-bottom: 32px;
-  padding-right: 60px;
+  padding-right: 80px;
 }
 .welcome_button {
   font-size: 24px;
@@ -111,32 +116,3 @@ section {
   );
 }
 </style>
-
-<!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img :src="imageOne" class="d-block w-100" alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img :src="imageTwo" class="d-block w-100" alt="..." />
-              </div>
-            </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div> -->

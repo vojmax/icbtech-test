@@ -1,12 +1,18 @@
 <template>
   <section v-if="aboutText" class="container-fluid col-10 p-0">
+    <div v-if="language === 'sr'" class="row mb-4">
+      <h2 class="text-center">O nama</h2>
+    </div>
+    <div v-if="language === 'hu'" class="row mb-4">
+      <h2 class="text-center">Rólunk</h2>
+    </div>
     <div class="row align-items-center m-0">
       <div v-if="language === 'sr'" class="col-6 p-0">
-        <h2 class="about_title">Lorem ipsum</h2>
+        <h3 class="about_title">Lorem ipsum</h3>
         <div class="about_text" v-html="aboutText.sr"></div>
       </div>
       <div v-if="language === 'hu'" class="col-6">
-        <h2 class="about_title">Lorem ipsum</h2>
+        <h3 class="about_title">Lorem ipsum</h3>
         <div class="about_text" v-html="aboutText.hu"></div>
       </div>
       <div class="col-6 p-0 m-0">
@@ -37,8 +43,14 @@ export default {
 
 <style scoped>
 h2 {
+  font-size: 42px;
   font-weight: 600;
   margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 32px;
+  font-weight: 600;
 }
 .about_text {
   padding-right: 80px;

@@ -21,7 +21,7 @@ export const useAboutStore = defineStore('AboutStore', () => {
       )
       aboutImage.value = imageUrl.url
     } catch (error) {
-      console.error('Failed to fetch cities:', error)
+      console.error('Failed to fetch about data:', error)
     }
   }
 
