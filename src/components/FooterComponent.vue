@@ -23,7 +23,8 @@
         </div>
         <address>
           <p>
-            <span class="red"> Adresa: </span>
+            <span v-if="language === 'sr'" class="red">Adresa: </span>
+            <span v-if="language === 'hu'" class="red">Cím: </span>
             {{ footerData.address }}
           </p>
         </address>
@@ -34,14 +35,17 @@
 
 <script>
 import { useFooterStore } from '@/store/FooterStore'
+import { useLangStore } from '@/store/LangStore'
 import { storeToRefs } from 'pinia'
 
 export default {
   name: 'FooterComponent',
   setup() {
+    const { language } = storeToRefs(useLangStore())
+
     const { footerData } = storeToRefs(useFooterStore())
 
-    return { footerData }
+    return { footerData, language }
   }
 }
 </script>
