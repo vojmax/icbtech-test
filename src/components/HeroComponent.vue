@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid col-10 p-0" v-if="welcome">
+  <section id="home" class="container-fluid col-10 p-0" v-if="welcome">
     <div class="row align-items-center">
       <div v-if="language === 'sr'" class="col-6 p-0">
         <div class="welcome_title" v-html="welcome.title.sr"></div>

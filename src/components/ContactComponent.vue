@@ -1,5 +1,5 @@
 <template>
-  <section v-if="language" class="container-fluid col-10 p-0">
+  <section id="contact" v-if="language" class="container-fluid col-10 p-0">
     <div class="row mb-4">
       <h2 class="text-center">Kontakt</h2>
     </div>

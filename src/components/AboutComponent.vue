@@ -1,5 +1,5 @@
 <template>
-  <section v-if="aboutText" class="container-fluid col-10 p-0">
+  <section id="about" v-if="aboutText" class="container-fluid col-10 p-0">
     <div v-if="language === 'sr'" class="row mb-4">
       <h2 class="text-center">O nama</h2>
     </div>

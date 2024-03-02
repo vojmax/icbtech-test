@@ -18,16 +18,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="/">Početna Stranica</a>
+            <a @click="handleScroll" class="nav-link" href="#home">{{
+              language === 'sr' ? 'Početna Stranica' : 'Kezdőlap'
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/map">Mapa</a>
+            <a @click="handleScroll" class="nav-link" href="#map">{{
+              language === 'sr' ? 'Mapa' : 'Térkép'
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">O Nama</a>
+            <a @click="handleScroll" class="nav-link" href="#about">
+              {{ language === 'sr' ? 'O nama' : 'Rólunk' }}</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Kontakt</a>
+            <a @click="handleScroll" class="nav-link" href="#contact ">Kontakt</a>
           </li>
           <div v-if="cities" class="select-city">
             <select v-model="selectedCity" class="form-select">
@@ -60,7 +66,18 @@ export default {
 
     const { cities, selectedCity } = storeToRefs(useCitiesStore())
 
-    return { cities, language, selectedCity }
+    const handleScroll = (e) => {
+      e.preventDefault()
+      const href = e.currentTarget.href
+      const targetId = href.replace(/.*\#/, '')
+      const elem = document.getElementById(targetId)
+      elem?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+
+    return { cities, language, selectedCity, handleScroll }
   },
   components: { LanguagePicker }
 }

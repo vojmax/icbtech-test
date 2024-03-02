@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid col-10 p-0">
+  <section id="map" class="container-fluid col-10 p-0">
     <div v-if="language">
       <div v-if="language === 'sr'" class="row mb-4">
         <h2 class="text-center">Mapa</h2>
