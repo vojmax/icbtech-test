@@ -20,17 +20,22 @@
           ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
           reprehenderit in
         </p>
-        <form v-if="language === 'sr'">
-          <input class="row" type="text" placeholder="Ime i prezime" />
-          <input class="row" type="email" placeholder="Email adresa" />
-          <input class="row" type="area" placeholder="Poruka" />
-          <button class="flex-end">Pošalji</button>
+        <form @submit.prevent="handleSubmit" v-if="language === 'sr'">
+          <input required v-model="name" class="row" type="text" placeholder="Ime i prezime" />
+          <input required v-model="email" class="row" type="email" placeholder="Email adresa" />
+          <input required v-model="message" class="row" type="area" placeholder="Poruka" />
+          <p style="color: red" v-if="error">{{ error }}</p>
+          <div class="d-flex flex-row-reverse">
+            <button>Pošalji</button>
+          </div>
         </form>
-        <form v-if="language === 'hu'">
-          <input type="text" placeholder="Teljes név" />
-          <input type="email" placeholder="Email cím" />
-          <input type="area" placeholder="Üzenet" />
-          <button class="flex-end">Küldés</button>
+        <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
+          <input required v-model="name" type="text" placeholder="Teljes név" />
+          <input required v-model="email" type="email" placeholder="Email cím" />
+          <input required v-model="message" type="area" placeholder="Üzenet" />
+          <div class="d-flex flex-row-reverse">
+            <button class="flex-end">Küldés</button>
+          </div>
         </form>
       </div>
     </div>
@@ -40,16 +45,47 @@
 
 <script>
 import { useLangStore } from '@/store/LangStore'
-
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import swal from 'sweetalert2'
 export default {
   name: 'ContactComponent',
-  // Your JavaScript code here
 
   setup() {
+    const name = ref('') // name input value
+    const email = ref('') // email input value
+    const message = ref('') // message input value
+    const error = ref(null) // error message
+
     const { language } = storeToRefs(useLangStore())
 
-    return { language }
+    function handleSubmit() {
+      if (name.value.length > 255) {
+        error.value = 'Name is too long'
+      } else if (message.value.length > 1000) {
+        error.value = 'Message is too long'
+      } else {
+        error.value = ''
+      }
+
+      if (!error.value) {
+        console.log(
+          JSON.parse(
+            `{"name":"${name.value}","email":"${email.value}","message":"${message.value}"}`
+          )
+        )
+        swal.fire({
+          title: name.value,
+          footer: email.value,
+          text: message.value,
+          icon: 'success',
+          backdrop: 'rgba(0,0,0,0.4)',
+          confirmButtonText: 'OK'
+        })
+      }
+    }
+
+    return { language, email, name, message, error, handleSubmit }
   }
 }
 </script>
@@ -89,8 +125,8 @@ input::placeholder {
   font-size: 20px;
 }
 button {
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 300;
   color: white;
   background-color: transparent;
   background: linear-gradient(
@@ -106,7 +142,7 @@ button {
   cursor: pointer;
 }
 button:hover {
-  padding: 0.65em 1.55em;
+  padding: 0.55em 1.55em;
   border: 1px solid white;
   background: linear-gradient(
     273.22deg,

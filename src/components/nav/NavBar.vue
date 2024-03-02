@@ -30,8 +30,8 @@
             <a class="nav-link" href="/contact">Kontakt</a>
           </li>
           <div v-if="cities" class="select-city">
-            <select class="form-select">
-              <option v-for="city in cities" :key="city.id">
+            <select v-model="selectedCity" class="form-select">
+              <option v-for="city in cities" :value="city.id" :key="city.id">
                 <div v-if="language === 'sr'">
                   {{ city.city_name.sr }}
                 </div>
@@ -53,18 +53,14 @@ import { useCitiesStore } from '../../store/CitiesStore'
 import { useLangStore } from '@/store/LangStore'
 import LanguagePicker from './LanguagePicker.vue'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
-
 export default {
   name: 'NavBar',
   setup() {
     const { language } = storeToRefs(useLangStore())
 
-    const placeholder = ref('Odaberite grad')
+    const { cities, selectedCity } = storeToRefs(useCitiesStore())
 
-    const { cities } = storeToRefs(useCitiesStore())
-
-    return { cities, language, placeholder }
+    return { cities, language, selectedCity }
   },
   components: { LanguagePicker }
 }
