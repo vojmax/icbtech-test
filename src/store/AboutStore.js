@@ -14,7 +14,6 @@ export const useAboutStore = defineStore('AboutStore', () => {
       aboutData.value = data
 
       aboutText.value = aboutData.value.about_us_text
-      console.log(aboutText.value)
 
       const imageUrl = await fetch(
         'https://ledbilbordi.web.icbtech.net/storage/' + aboutData.value.photo_name

@@ -69,6 +69,7 @@ export default {
     const handleScroll = (e) => {
       e.preventDefault()
       const href = e.currentTarget.href
+      //eslint-disable-next-line
       const targetId = href.replace(/.*\#/, '')
       const elem = document.getElementById(targetId)
       elem?.scrollIntoView({

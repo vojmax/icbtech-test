@@ -1,6 +1,6 @@
 <template>
   <section id="map" class="container-fluid col-10 p-0">
-    <div v-if="language">
+    <div v-if="bilboards">
       <div v-if="language === 'sr'" class="row mb-4">
         <h2 class="text-center">Mapa</h2>
       </div>
@@ -19,7 +19,9 @@
           </GoogleMap>
         </div>
         <div class="col-4">
-          <h3>{{ language }}</h3>
+          <div v-for="bilboard in bilboards" :key="bilboard.id">
+            <BilboardCard :bilboard="bilboard" />
+          </div>
         </div>
       </div>
     </div>
@@ -28,25 +30,25 @@
 </template>
 
 <script>
+import BilboardCard from './BilboardCard.vue'
 import { useLangStore } from '@/store/LangStore'
+import { useMapStore } from '@/store/MapStore'
 import { storeToRefs } from 'pinia'
 import { GoogleMap, Marker as GoogleMarker } from 'vue3-google-map'
-import { ref } from 'vue'
 
 export default {
   name: 'MapComponent',
-  components: { GoogleMap, GoogleMarker },
+  components: { GoogleMap, GoogleMarker, BilboardCard },
 
   setup() {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
     const { language } = storeToRefs(useLangStore())
-
-    const theme = ref('aubergine')
+    const { bilboards } = storeToRefs(useMapStore())
 
     const center = { lat: 40.689247, lng: -74.044502 }
 
-    return { language, center, theme, apiKey }
+    return { language, center, apiKey, bilboards }
   }
 }
 </script>

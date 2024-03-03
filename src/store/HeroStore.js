@@ -24,9 +24,6 @@ export const useHeroStore = defineStore('HeroStore', () => {
     const imageUrl1 = 'https://ledbilbordi.web.icbtech.net/storage/' + welcome.value.photo_names[0]
     const imageUrl2 = 'https://ledbilbordi.web.icbtech.net/storage/' + welcome.value.photo_names[1]
 
-    console.log('url:', imageUrl1)
-    console.log('url:', imageUrl2)
-
     try {
       const firstImage = await fetch(imageUrl1)
       const secondImage = await fetch(imageUrl2)

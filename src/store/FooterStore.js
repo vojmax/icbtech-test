@@ -9,8 +9,6 @@ export const useFooterStore = defineStore('FooterStore', () => {
       const response = await fetch('https://ledbilbordi.web.icbtech.net/api/v1/footer-contact')
       const data = await response.json()
       footerData.value = data
-
-      console.log(footerData.value)
     } catch (error) {
       console.error('Failed to fetch data:', error)
     }
