@@ -11,18 +11,19 @@
         <div class="col-8">
           <GoogleMap
             :api-key="apiKey"
-            style="width: 100%; height: 500px"
+            style="width: 100%; height: 500px; border-radius: 32px"
             :center="center"
             :zoom="15"
           >
             <GoogleMarker :options="{ position: center }" />
           </GoogleMap>
         </div>
-        <div class="col-4">
+        <div v-if="bilboards" class="scroll col-4">
           <div v-for="bilboard in bilboards" :key="bilboard.id">
             <BilboardCard :bilboard="bilboard" />
           </div>
         </div>
+        <div v-else>loading</div>
       </div>
     </div>
     <div v-else>loading</div>
@@ -67,5 +68,33 @@ h2 {
 }
 img {
   border-radius: 32px;
+}
+
+.scroll {
+  height: 500px;
+  overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(61, 61, 83);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #aaaaaa;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+  cursor: pointer;
 }
 </style>
