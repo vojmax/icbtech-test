@@ -4,6 +4,17 @@ import { useCitiesStore } from './CitiesStore'
 
 export const useMapStore = defineStore('MapStore', () => {
   const bilboards = ref([]) // reactive bilboards array
+  const selectMore = ref(false) // reactive selectMore flag
+  const selectedBilboards = ref([]) // reactive selectedBilboard object
+
+  watch(selectedBilboards, () => {
+    console.log('selectedBilboards changed:', selectedBilboards.value)
+  })
+
+  watch(selectMore, () => {
+    console.log('selectMore changed:', selectMore.value)
+  })
+
   const { selectedCity } = storeToRefs(useCitiesStore()) // useCitiesStore() returns the store instance
 
   watch(selectedCity, () => {
@@ -24,5 +35,5 @@ export const useMapStore = defineStore('MapStore', () => {
   onMounted(() => {
     fetchBilboards() // fetch bilboards when the component is mounted
   })
-  return { bilboards }
+  return { bilboards, selectedBilboards, selectMore }
 })

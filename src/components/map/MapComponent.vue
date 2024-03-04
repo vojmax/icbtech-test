@@ -8,17 +8,37 @@
         <h2 class="text-center">Térkép</h2>
       </div>
       <div class="row map">
-        <div class="col-8">
+        <div class="map-container col-8">
           <GoogleMap
             :api-key="apiKey"
-            style="width: 100%; height: 500px; border-radius: 32px"
             :center="center"
-            :zoom="15"
+            :zoom="18"
+            :fullscreen-control="false"
+            :style="{
+              width: '100%',
+              height: '500px',
+              borderRadius: '32px',
+              overflow: 'hidden'
+            }"
           >
             <GoogleMarker :options="{ position: center }" />
           </GoogleMap>
         </div>
         <div v-if="bilboards" class="scroll col-4">
+          <button class="select-more-btn" @click="selectMore = !selectMore">
+            <p v-if="!selectMore" class="p-0 m-0">
+              <span>
+                {{ language === 'sr' ? 'Izaberite više' : 'Válasszon többet' }}
+              </span>
+              <img src="../../assets/select-more.svg" alt="arrow" />
+            </p>
+            <p v-if="selectMore" class="p-0 m-0">
+              <span>
+                {{ language === 'sr' ? 'Obrišite izbor' : 'Törlés' }}
+              </span>
+              <img src="../../assets/remove-more.svg" alt="arrow" />
+            </p>
+          </button>
           <div v-for="bilboard in bilboards" :key="bilboard.id">
             <BilboardCard :bilboard="bilboard" />
           </div>
@@ -26,7 +46,6 @@
         <div v-else>loading</div>
       </div>
     </div>
-    <div v-else>loading</div>
   </section>
 </template>
 
@@ -45,11 +64,11 @@ export default {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
     const { language } = storeToRefs(useLangStore())
-    const { bilboards } = storeToRefs(useMapStore())
+    const { bilboards, selectMore } = storeToRefs(useMapStore())
 
     const center = { lat: 40.689247, lng: -74.044502 }
 
-    return { language, center, apiKey, bilboards }
+    return { language, center, apiKey, bilboards, selectMore }
   }
 }
 </script>
@@ -66,8 +85,18 @@ h2 {
   background-image: linear-gradient(90deg, #02020f00, hsla(240, 76%, 3%, 0.75));
   border-radius: 32px;
 }
-img {
+
+.select-more-btn {
+  width: 100%;
+  background-color: #20202d;
+  border: none;
   border-radius: 32px;
+  padding: 0.5em;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 1em;
+  cursor: pointer;
 }
 
 .scroll {
