@@ -24,24 +24,30 @@
             <GoogleMarker :options="{ position: center }" />
           </GoogleMap>
         </div>
-        <div v-if="bilboards" class="scroll col-4">
-          <button class="select-more-btn" @click="selectMore = !selectMore">
+        <div v-if="bilboards" class="bilboard-container col-4">
+          <button class="select-more-btn" @click="selectChange">
             <p v-if="!selectMore" class="p-0 m-0">
               <span>
                 {{ language === 'sr' ? 'Izaberite više' : 'Válasszon többet' }}
               </span>
-              <img src="../../assets/select-more.svg" alt="arrow" />
+              <img src="../../assets/svg/select-more.svg" alt="arrow" />
             </p>
             <p v-if="selectMore" class="p-0 m-0">
               <span>
                 {{ language === 'sr' ? 'Obrišite izbor' : 'Törlés' }}
               </span>
-              <img src="../../assets/remove-more.svg" alt="arrow" />
+              <img src="../../assets/svg/remove-more.svg" alt="arrow" />
             </p>
           </button>
-          <div v-for="bilboard in bilboards" :key="bilboard.id">
-            <BilboardCard :bilboard="bilboard" />
+          <div :class="selectMore && 'hidden'" class="scroll">
+            <div v-for="bilboard in bilboards" :key="bilboard.id">
+              <BilboardCard :bilboard="bilboard" />
+            </div>
           </div>
+          <a class="reserve-multiple btn btn-primary w-100" v-if="selectMore"
+            >Rezervišite bilborde
+            <img src="../../assets/svg/reserve-bilboard.svg" />
+          </a>
         </div>
         <div v-else>loading</div>
       </div>
@@ -64,11 +70,16 @@ export default {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
     const { language } = storeToRefs(useLangStore())
-    const { bilboards, selectMore } = storeToRefs(useMapStore())
+    const { bilboards, selectMore, selectedBilboards } = storeToRefs(useMapStore())
+
+    const selectChange = () => {
+      selectMore.value = !selectMore.value
+      selectedBilboards.value = []
+    }
 
     const center = { lat: 40.689247, lng: -74.044502 }
 
-    return { language, center, apiKey, bilboards, selectMore }
+    return { language, center, apiKey, bilboards, selectChange, selectMore }
   }
 }
 </script>
@@ -86,6 +97,10 @@ h2 {
   border-radius: 32px;
 }
 
+.bilboard-container {
+  height: 500px;
+}
+
 .select-more-btn {
   width: 100%;
   background-color: #20202d;
@@ -94,34 +109,41 @@ h2 {
   padding: 0.5em;
   color: white;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 1em;
   cursor: pointer;
 }
 
-.scroll {
-  height: 500px;
-  overflow: auto;
+img {
+  margin-left: 2em;
 }
 
-/* width */
+.scroll {
+  max-height: 444px;
+  border-radius: 32px;
+  overflow: auto;
+  padding-right: 1em;
+}
+.hidden {
+  max-height: 388px;
+  margin-bottom: 1em;
+}
+
+/* scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: rgb(61, 61, 83);
   border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #aaaaaa;
   border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
   cursor: pointer;

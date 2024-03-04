@@ -2,7 +2,7 @@
   <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25">
     <div class="container-fluid text-white">
       <a class="navbar-brand" href="/">
-        <img src="../../assets/nav-logo.svg" />
+        <img src="../../assets/svg/nav-logo.svg" />
       </a>
       <button
         class="navbar-toggler"

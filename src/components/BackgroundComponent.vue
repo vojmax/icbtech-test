@@ -22,7 +22,7 @@ export default {
   top: 0;
   position: absolute;
   width: 100%;
-  height: 452.5%;
+  height: 435%;
   background-color: #02020f;
   overflow: hidden;
 }

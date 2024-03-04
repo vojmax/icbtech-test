@@ -43,7 +43,11 @@
       </div>
     </div>
   </section>
-  <div v-else>loading</div>
+  <div class="loading container-fluid col-10 p-0" v-else>
+    <div class="row align-items-center">
+      <h1>Loading...</h1>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -65,7 +69,8 @@ export default {
 </script>
 
 <style scoped>
-section {
+section,
+.loading {
   margin: 130px auto 0;
   height: 600px;
 }

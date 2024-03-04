@@ -3,7 +3,7 @@
     <div v-if="footerData" class="row justify-content-center align-items-center">
       <div class="col-3 text-center">
         <a>
-          <img src="../assets/footer-logo.svg" alt="logo" />
+          <img src="../assets/svg/footer-logo.svg" alt="logo" />
         </a>
       </div>
       <div v-if="footerData" class="col-3">
