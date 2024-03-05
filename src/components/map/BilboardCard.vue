@@ -37,9 +37,9 @@
             <span> • </span>
             <span class="address">{{ bilboard.address }}</span>
           </p>
-          <a @click="openModal" v-if="!selectMore" class="btn btn-primary mt-2"
-            >Rezervišite bilbord</a
-          >
+          <a @click="openModal" v-if="!selectMore" class="btn btn-primary mt-2">{{
+            language === 'sr' ? 'Rezervišite bilbord' : 'Foglaljon hirdetőtáblát'
+          }}</a>
         </div>
       </div>
     </div>

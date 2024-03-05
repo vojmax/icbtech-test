@@ -69,8 +69,7 @@ export default {
     const handleScroll = (e) => {
       e.preventDefault()
       const href = e.currentTarget.href
-      //eslint-disable-next-line
-      const targetId = href.replace(/.*\#/, '')
+      const targetId = href.replace(/.*#/, '')
       const elem = document.getElementById(targetId)
       elem?.scrollIntoView({
         behavior: 'smooth',
@@ -92,11 +91,16 @@ nav {
 .container-fluid {
   margin: 0 7em;
 }
-
 .nav-item {
-  color: white;
-  padding: 1em 1em;
+  margin-right: 2em;
 }
+.nav-item a {
+  color: rgb(211, 211, 211);
+}
+.nav-item a:hover {
+  color: white;
+}
+
 .form-select {
   background-color: transparent;
   background-image: url('data:image/svg+xml;utf8,<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.9997 5.1714L11.9495 0.22168L13.3637 1.63589L6.9997 7.9999L0.635742 1.63589L2.04996 0.22168L6.9997 5.1714Z" fill="white"/></svg>');
