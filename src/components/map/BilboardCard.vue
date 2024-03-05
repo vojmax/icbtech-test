@@ -10,7 +10,7 @@
           <img :src="imgUrl + bilboard.photo_name" alt="bilboard" />
         </div>
         <div v-else>
-          <img class="image-container" :src="imageTwo" />
+          <img class="image-container" src="../../assets/no-image.jpg" />
         </div>
       </div>
       <div class="col-8">
