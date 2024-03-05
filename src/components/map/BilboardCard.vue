@@ -37,7 +37,9 @@
             <span> • </span>
             <span class="address">{{ bilboard.address }}</span>
           </p>
-          <a v-if="!selectMore" class="btn btn-primary mt-2">Rezervišite bilbord</a>
+          <a @click="openModal" v-if="!selectMore" class="btn btn-primary mt-2"
+            >Rezervišite bilbord</a
+          >
         </div>
       </div>
     </div>

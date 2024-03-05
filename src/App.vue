@@ -25,6 +25,6 @@ import BackgroundComponent from './components/BackgroundComponent.vue'
 <style scoped>
 .content {
   position: relative;
-  z-index: 1041;
+  z-index: 1;
 }
 </style>

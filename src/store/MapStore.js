@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue'
 import { useCitiesStore } from './CitiesStore'
 
 export const useMapStore = defineStore('MapStore', () => {
+  const { selectedCity } = storeToRefs(useCitiesStore()) // useCitiesStore() returns the store instance
   const bilboards = ref([]) // reactive bilboards array
   const selectMore = ref(false) // reactive selectMore flag
   const selectedBilboards = ref([]) // array of checked bilboards ids
@@ -16,15 +17,17 @@ export const useMapStore = defineStore('MapStore', () => {
     console.log('filterBilboardsById changed:', filterBilboardsById.value)
   })
 
-  watch(bilboardCenter, () => {
+  watch(bilboards, () => {
+    bilboardCenter.value = {
+      lat: Number(bilboards.value[0].latitude),
+      lng: Number(bilboards.value[0].longitude)
+    } // set center to first bilboard location whenever city in nav changes
     console.log('bilboardCenter changed:', bilboardCenter.value)
   })
 
   watch(selectMore, () => {
     console.log('selectMore changed:', selectMore.value)
   })
-
-  const { selectedCity } = storeToRefs(useCitiesStore()) // useCitiesStore() returns the store instance
 
   watch(selectedCity, () => {
     fetchBilboards() // fetch bilboards when selectedCity changes
@@ -41,6 +44,7 @@ export const useMapStore = defineStore('MapStore', () => {
       console.error('Failed to fetch bilboards data:', error)
     }
   }
+
   onMounted(() => {
     fetchBilboards() // fetch bilboards when the component is mounted
   })

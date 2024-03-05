@@ -12,7 +12,7 @@
           <GoogleMap
             :api-key="apiKey"
             :center="bilboardCenter"
-            :zoom="15"
+            :zoom="13"
             :fullscreen-control="false"
             :style="{
               width: '100%',
