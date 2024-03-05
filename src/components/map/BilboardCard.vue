@@ -74,7 +74,6 @@ export default {
         lat: Number(lat),
         lng: Number(long)
       }
-      console.log(bilboardCenter.value)
     }
 
     return { imgUrl, imageTwo, language, selectMore, selectedBilboards, setMapCenter }

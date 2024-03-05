@@ -78,6 +78,7 @@ import { GoogleMap, Marker, MarkerCluster } from 'vue3-google-map'
 
 export default {
   name: 'MapComponent',
+  // eslint-disable-next-line vue/no-reserved-component-names
   components: { GoogleMap, Marker, BilboardCard, MarkerCluster },
 
   setup() {

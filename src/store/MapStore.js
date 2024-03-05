@@ -5,12 +5,15 @@ import { useCitiesStore } from './CitiesStore'
 export const useMapStore = defineStore('MapStore', () => {
   const bilboards = ref([]) // reactive bilboards array
   const selectMore = ref(false) // reactive selectMore flag
-  const selectedBilboards = ref([]) // reactive selectedBilboard object
-
-  const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 })
+  const selectedBilboards = ref([]) // array of checked bilboards ids
+  const filterBilboardsById = ref([]) // reactive filterBilboardsById object
+  const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 }) // reactive bilboardCenter object with default value
 
   watch(selectedBilboards, () => {
-    console.log('selectedBilboards changed:', selectedBilboards.value)
+    filterBilboardsById.value = bilboards.value.filter((bilboard) =>
+      selectedBilboards.value.includes(bilboard.id)
+    ) // filter bilboards by selectedBilboards whenever selectedBilboards changes
+    console.log('filterBilboardsById changed:', filterBilboardsById.value)
   })
 
   watch(bilboardCenter, () => {
@@ -41,5 +44,5 @@ export const useMapStore = defineStore('MapStore', () => {
   onMounted(() => {
     fetchBilboards() // fetch bilboards when the component is mounted
   })
-  return { bilboards, selectedBilboards, selectMore, bilboardCenter }
+  return { bilboards, selectedBilboards, selectMore, bilboardCenter, filterBilboardsById }
 })
