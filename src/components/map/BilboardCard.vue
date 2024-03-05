@@ -6,11 +6,11 @@
   >
     <div class="row g-0">
       <div class="col-4">
-        <div v-if="bilboard.photo_name != null">
-          <img :src="imgUrl + bilboard.photo_name" alt="bilboard" height="120" width="120" />
+        <div class="image-container" v-if="bilboard.photo_name != null">
+          <img :src="imgUrl + bilboard.photo_name" alt="bilboard" />
         </div>
         <div v-else>
-          <img :src="imageTwo" height="120" width="120" />
+          <img class="image-container" :src="imageTwo" />
         </div>
       </div>
       <div class="col-8">
@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 import { useHeroStore } from '@/store/HeroStore'
 import { useLangStore } from '@/store/LangStore'
 import { useMapStore } from '@/store/MapStore'
@@ -68,17 +67,24 @@ export default {
     const { selectedBilboards, selectMore, bilboardCenter } = storeToRefs(useMapStore())
 
     const { language } = storeToRefs(useLangStore())
-    const imgUrl = ref('https://ledbilbordi.web.icbtech.net/storage/')
+    const imgUrl = 'https://ledbilbordi.web.icbtech.net/storage/'
     const { imageTwo } = storeToRefs(useHeroStore())
 
-    const setMapCenter = (lat, long) => {
+    const setMapCenter = (lat, lng) => {
       bilboardCenter.value = {
         lat: Number(lat),
-        lng: Number(long)
+        lng: Number(lng)
       }
     }
 
-    return { imgUrl, imageTwo, language, selectMore, selectedBilboards, setMapCenter }
+    return {
+      imgUrl,
+      imageTwo,
+      language,
+      selectMore,
+      selectedBilboards,
+      setMapCenter
+    }
   }
 }
 </script>
@@ -97,7 +103,15 @@ export default {
 }
 
 .card img {
+  object-fit: cover;
+  max-width: 220px;
+  max-height: 220px;
+}
+.image-container {
+  width: 120px;
+  height: 120px;
   border-radius: 16px;
+  overflow: hidden;
 }
 
 .card-text {

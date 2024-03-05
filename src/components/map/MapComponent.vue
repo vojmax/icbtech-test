@@ -54,6 +54,7 @@
             </div>
           </div>
           <a
+            @click="openModal"
             type="button"
             data-bs-target="#exampleModal"
             data-bs-toggle="modal"

@@ -10,6 +10,13 @@ export const useMapStore = defineStore('MapStore', () => {
   const filterBilboardsById = ref([]) // reactive filterBilboardsById object
   const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 }) // reactive bilboardCenter object with default value
 
+  const showModal = ref(false)
+
+  const openModal = () => {
+    showModal.value = true
+    console.log('open modal function' + showModal.value)
+  }
+
   watch(selectedBilboards, () => {
     filterBilboardsById.value = bilboards.value.filter((bilboard) =>
       selectedBilboards.value.includes(bilboard.id)
@@ -30,6 +37,7 @@ export const useMapStore = defineStore('MapStore', () => {
   })
 
   watch(selectedCity, () => {
+    selectedBilboards.value = [] // reset selectedBilboards whenever selectedCity changes
     fetchBilboards() // fetch bilboards when selectedCity changes
   })
 
@@ -48,5 +56,13 @@ export const useMapStore = defineStore('MapStore', () => {
   onMounted(() => {
     fetchBilboards() // fetch bilboards when the component is mounted
   })
-  return { bilboards, selectedBilboards, selectMore, bilboardCenter, filterBilboardsById }
+  return {
+    bilboards,
+    selectedBilboards,
+    selectMore,
+    bilboardCenter,
+    filterBilboardsById,
+    showModal,
+    openModal
+  }
 })
