@@ -1,5 +1,9 @@
 <template>
-  <div class="card mb-3 p-3" style="max-width: 488px; max-height: 154px">
+  <div
+    @click="setMapCenter(bilboard.latitude, bilboard.longitude)"
+    class="card mb-3 p-3"
+    style="max-width: 488px; max-height: 154px"
+  >
     <div class="row g-0">
       <div class="col-4">
         <div v-if="bilboard.photo_name != null">
@@ -33,7 +37,7 @@
             <span> • </span>
             <span class="address">{{ bilboard.address }}</span>
           </p>
-          <a v-if="!selectMore" class="btn btn-primary">Rezervišite bilbord</a>
+          <a v-if="!selectMore" class="btn btn-primary mt-2">Rezervišite bilbord</a>
         </div>
       </div>
     </div>
@@ -59,13 +63,21 @@ export default {
   emits: ['update:bilboardArray'],
 
   setup() {
-    const { selectedBilboards, selectMore } = storeToRefs(useMapStore())
+    const { selectedBilboards, selectMore, bilboardCenter } = storeToRefs(useMapStore())
 
     const { language } = storeToRefs(useLangStore())
     const imgUrl = ref('https://ledbilbordi.web.icbtech.net/storage/')
     const { imageTwo } = storeToRefs(useHeroStore())
 
-    return { imgUrl, imageTwo, language, selectMore, selectedBilboards }
+    const setMapCenter = (lat, long) => {
+      bilboardCenter.value = {
+        lat: Number(lat),
+        lng: Number(long)
+      }
+      console.log(bilboardCenter.value)
+    }
+
+    return { imgUrl, imageTwo, language, selectMore, selectedBilboards, setMapCenter }
   }
 }
 </script>
@@ -79,8 +91,8 @@ export default {
 .card-title {
   font-size: 24px;
   font-weight: 500;
-  padding-bottom: 8px;
-  margin: 0;
+  margin-bottom: 0.3em;
+  line-height: 20px;
 }
 
 .card img {
@@ -90,6 +102,7 @@ export default {
 .card-text {
   font-size: 16px;
   font-weight: 300;
+  margin-bottom: 0em;
 }
 
 .city-name {
@@ -102,12 +115,6 @@ export default {
   font-size: 14px;
   font-weight: 400;
   color: #3cadff;
-}
-
-.descrtiption {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .checkbox {

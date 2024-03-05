@@ -7,8 +7,14 @@ export const useMapStore = defineStore('MapStore', () => {
   const selectMore = ref(false) // reactive selectMore flag
   const selectedBilboards = ref([]) // reactive selectedBilboard object
 
+  const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 })
+
   watch(selectedBilboards, () => {
     console.log('selectedBilboards changed:', selectedBilboards.value)
+  })
+
+  watch(bilboardCenter, () => {
+    console.log('bilboardCenter changed:', bilboardCenter.value)
   })
 
   watch(selectMore, () => {
@@ -35,5 +41,5 @@ export const useMapStore = defineStore('MapStore', () => {
   onMounted(() => {
     fetchBilboards() // fetch bilboards when the component is mounted
   })
-  return { bilboards, selectedBilboards, selectMore }
+  return { bilboards, selectedBilboards, selectMore, bilboardCenter }
 })

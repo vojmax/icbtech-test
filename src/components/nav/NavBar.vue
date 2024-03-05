@@ -114,6 +114,4 @@ nav {
   background-color: rgb(131, 131, 131);
   padding: 1em;
 }
-
-/* add custom styles to select and options */
 </style>

@@ -11,8 +11,8 @@
         <div class="map-container col-8">
           <GoogleMap
             :api-key="apiKey"
-            :center="center"
-            :zoom="18"
+            :center="bilboardCenter"
+            :zoom="15"
             :fullscreen-control="false"
             :style="{
               width: '100%',
@@ -21,7 +21,16 @@
               overflow: 'hidden'
             }"
           >
-            <GoogleMarker :options="{ position: center }" />
+            <MarkerCluster v-if="bilboards">
+              <Marker
+                clickable
+                v-for="bilboard in bilboards"
+                :key="bilboard.id"
+                :options="{
+                  position: { lat: Number(bilboard.latitude), lng: Number(bilboard.longitude) }
+                }"
+              />
+            </MarkerCluster>
           </GoogleMap>
         </div>
         <div v-if="bilboards" class="bilboard-container col-4">
@@ -44,8 +53,13 @@
               <BilboardCard :bilboard="bilboard" />
             </div>
           </div>
-          <a class="reserve-multiple btn btn-primary w-100" v-if="selectMore"
-            >Rezervišite bilborde
+          <a
+            type="button"
+            data-bs-target="#exampleModal"
+            data-bs-toggle="modal"
+            class="reserve-multiple btn btn-primary w-100"
+            v-if="selectMore"
+            >{{ language === 'sr' ? 'Rezervišite bilborde' : 'Könyv hirdetőtáblák' }}
             <img src="../../assets/svg/reserve-bilboard.svg" />
           </a>
         </div>
@@ -60,26 +74,24 @@ import BilboardCard from './BilboardCard.vue'
 import { useLangStore } from '@/store/LangStore'
 import { useMapStore } from '@/store/MapStore'
 import { storeToRefs } from 'pinia'
-import { GoogleMap, Marker as GoogleMarker } from 'vue3-google-map'
+import { GoogleMap, Marker, MarkerCluster } from 'vue3-google-map'
 
 export default {
   name: 'MapComponent',
-  components: { GoogleMap, GoogleMarker, BilboardCard },
+  components: { GoogleMap, Marker, BilboardCard, MarkerCluster },
 
   setup() {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
     const { language } = storeToRefs(useLangStore())
-    const { bilboards, selectMore, selectedBilboards } = storeToRefs(useMapStore())
+    const { bilboards, selectMore, selectedBilboards, bilboardCenter } = storeToRefs(useMapStore())
 
     const selectChange = () => {
       selectMore.value = !selectMore.value
       selectedBilboards.value = []
     }
 
-    const center = { lat: 40.689247, lng: -74.044502 }
-
-    return { language, center, apiKey, bilboards, selectChange, selectMore }
+    return { language, apiKey, bilboards, selectChange, selectMore, bilboardCenter }
   }
 }
 </script>

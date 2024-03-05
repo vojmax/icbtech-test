@@ -10,8 +10,8 @@ import BackgroundComponent from './components/BackgroundComponent.vue'
 
 <template>
   <main>
-    <NavBar />
     <div class="content">
+      <NavBar />
       <HeroComponent />
       <MapComponent />
       <AboutComponent />
@@ -25,7 +25,6 @@ import BackgroundComponent from './components/BackgroundComponent.vue'
 <style scoped>
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 1041;
 }
 </style>
-./components/map/MapComponent.vue
