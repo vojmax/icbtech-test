@@ -8,16 +8,16 @@
       </p>
     </div>
     <form @submit.prevent="handleSubmit" v-if="language === 'sr'">
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="name" type="text" placeholder="Ime i prezime" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="company_name" type="text" placeholder="Ime kompanije" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="phone_number" type="text" placeholder="Broj telefona" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="email" type="email" placeholder="Email adresa" />
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
@@ -29,16 +29,16 @@
       </div>
     </form>
     <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="name" type="text" placeholder="Teljes név" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="company_name" type="text" placeholder="Cég neve" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="phone_number" type="text" placeholder="Telefonszám" />
       </div>
-      <div class="row mb-3 mx-0">
+      <div class="row mb-1 mx-0">
         <input required v-model="email" type="email" placeholder="Email cím" />
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
@@ -90,6 +90,12 @@ p {
   font-size: 1rem;
   font-weight: 300;
   line-height: 18px;
+}
+input {
+  border: 2px solid rgba(136, 136, 136, 1);
+  border-radius: 0.5rem;
+  font-size: 20px;
+  padding: 0.8rem 1.5rem;
 }
 
 button {

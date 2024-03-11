@@ -127,7 +127,7 @@ h6 {
 
 .btn {
   background-color: rgba(34, 48, 142, 1);
-  padding: 1em;
+  padding: 0.6em 2em;
   font-size: 16px;
   font-weight: 400;
 }
