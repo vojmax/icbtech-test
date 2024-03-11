@@ -54,16 +54,17 @@
                 <BilboardCard :bilboard="bilboard" />
               </div>
             </div>
-            <a
-              @click="openModal"
+            <button
+              :disabled="selectedBilboards.length < 1"
               type="button"
               data-bs-target="#exampleModal"
               data-bs-toggle="modal"
               class="reserve-multiple btn btn-primary w-100"
               v-if="selectMore"
-              >{{ language === 'sr' ? 'Rezervišite bilborde' : 'Könyv hirdetőtáblák' }}
+            >
+              {{ language === 'sr' ? 'Rezervišite bilborde' : 'Könyv hirdetőtáblák' }}
               <img src="../../assets/svg/reserve-bilboard.svg" />
-            </a>
+            </button>
           </div>
           <div class="loading container-fluid col-10 p-0" v-else>
             <div class="row align-items-center">
@@ -99,7 +100,15 @@ export default {
       selectedBilboards.value = []
     }
 
-    return { language, apiKey, bilboards, selectChange, selectMore, bilboardCenter }
+    return {
+      language,
+      apiKey,
+      bilboards,
+      selectChange,
+      selectMore,
+      bilboardCenter,
+      selectedBilboards
+    }
   }
 }
 </script>

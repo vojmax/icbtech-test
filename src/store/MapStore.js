@@ -10,13 +10,6 @@ export const useMapStore = defineStore('MapStore', () => {
   const filterBilboardsById = ref([]) // reactive filterBilboardsById object
   const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 }) // reactive bilboardCenter object with default value
 
-  const showModal = ref(false)
-
-  const openModal = () => {
-    showModal.value = true
-    console.log('open modal function' + showModal.value)
-  }
-
   watch(selectedBilboards, () => {
     filterBilboardsById.value = bilboards.value.filter((bilboard) =>
       selectedBilboards.value.includes(bilboard.id)
@@ -61,8 +54,6 @@ export const useMapStore = defineStore('MapStore', () => {
     selectedBilboards,
     selectMore,
     bilboardCenter,
-    filterBilboardsById,
-    showModal,
-    openModal
+    filterBilboardsById
   }
 })
