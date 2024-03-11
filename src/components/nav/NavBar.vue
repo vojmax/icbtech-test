@@ -1,5 +1,5 @@
 <template>
-  <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-lg bg-black bg-opacity-25">
+  <nav class="m-auto sticky-top navbar navbar-dark navbar-expand-xl bg-black bg-opacity-25">
     <div class="container-fluid text-white">
       <a class="navbar-brand" href="/">
         <img src="../../assets/svg/nav-logo.svg" />

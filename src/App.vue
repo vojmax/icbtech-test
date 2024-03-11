@@ -10,21 +10,14 @@ import BackgroundComponent from './components/BackgroundComponent.vue'
 
 <template>
   <main>
-    <div class="content">
-      <NavBar />
-      <HeroComponent />
-      <MapComponent />
-      <AboutComponent />
-      <ContactComponent />
-      <FooterComponent />
-    </div>
+    <NavBar />
+    <HeroComponent />
+    <MapComponent />
+    <AboutComponent />
+    <ContactComponent />
+    <FooterComponent />
     <BackgroundComponent />
   </main>
 </template>
 
-<style scoped>
-.content {
-  position: relative;
-  z-index: 1;
-}
-</style>
+<style scoped></style>

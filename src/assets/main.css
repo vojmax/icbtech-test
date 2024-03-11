@@ -9,9 +9,11 @@ html {
   padding: 0;
 }
 
+main {
+  position: relative;
+  height: fit-content;
+}
 section {
-  margin: 260px auto;
-  height: 700px;
-  border-radius: 2em;
+  margin-top: 10%;
   color: white;
 }

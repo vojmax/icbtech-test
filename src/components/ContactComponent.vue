@@ -1,46 +1,47 @@
 <template>
-  <section id="contact" v-if="language" class="container-fluid col-10 p-0">
-    <div class="row mb-4">
-      <h2 class="text-center">Kontakt</h2>
-    </div>
-    <div class="row align-items-center m-0">
-      <div class="col-6 p-0 m-0">
-        <img
-          src="../assets/contact-image.jpg"
-          width="800px"
-          height="600px"
-          style="border-radius: 32px"
-        />
+  <div class="section-row row mx-0">
+    <section id="contact" v-if="language" class="container-fluid col-10">
+      <div class="row mb-4">
+        <h2 class="text-center">Kontakt</h2>
       </div>
+      <div class="row align-items-center p-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 p-0">
+          <img
+            src="../assets/contact-image.jpg"
+            class="fixed-height w-100"
+            style="border-radius: 32px"
+          />
+        </div>
 
-      <div class="form-container col-5 p-0">
-        <p class="about_text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in
-        </p>
-        <form @submit.prevent="handleSubmit" v-if="language === 'sr'">
-          <input required v-model="name" class="row" type="text" placeholder="Ime i prezime" />
-          <input required v-model="email" class="row" type="email" placeholder="Email adresa" />
-          <input required v-model="message" class="row" type="area" placeholder="Poruka" />
-          <p style="color: red" v-if="error">{{ error }}</p>
-          <div class="d-flex flex-row-reverse">
-            <button>Pošalji</button>
-          </div>
-        </form>
-        <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
-          <input required v-model="name" type="text" placeholder="Teljes név" />
-          <input required v-model="email" type="email" placeholder="Email cím" />
-          <input required v-model="message" type="area" placeholder="Üzenet" />
-          <div class="d-flex flex-row-reverse">
-            <button class="flex-end">Küldés</button>
-          </div>
-        </form>
+        <div class="form-container col-xl-6 col-sm-12">
+          <p class="about_text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in
+          </p>
+          <form @submit.prevent="handleSubmit" v-if="language === 'sr'">
+            <input required v-model="name" class="row" type="text" placeholder="Ime i prezime" />
+            <input required v-model="email" class="row" type="email" placeholder="Email adresa" />
+            <input required v-model="message" class="row area" type="area" placeholder="Poruka" />
+            <p style="color: red" v-if="error">{{ error }}</p>
+            <div class="d-flex flex-row-reverse">
+              <button>Pošalji</button>
+            </div>
+          </form>
+          <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
+            <input required v-model="name" class="row" type="text" placeholder="Teljes név" />
+            <input required v-model="email" class="row" type="email" placeholder="Email cím" />
+            <input required v-model="message" class="row area" type="area" placeholder="Üzenet" />
+            <div class="d-flex flex-row-reverse">
+              <button class="flex-end">Küldés</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
-  <div v-else>loading</div>
+    </section>
+    <div v-else>loading</div>
+  </div>
 </template>
 
 <script>
@@ -91,24 +92,18 @@ export default {
 </script>
 
 <style scoped>
+.section-row {
+  margin-top: 10%;
+}
 h2 {
   font-size: 42px;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
 p {
-  width: 720px;
   font-size: 16px;
   font-weight: 300;
   margin-bottom: 1.5em;
-}
-.form-container {
-  margin-left: 60px;
-  right: 0;
-}
-form {
-  position: relative;
-  width: 720px;
 }
 input {
   background-color: transparent;
@@ -124,6 +119,11 @@ input::placeholder {
   color: rgba(187, 187, 187, 1);
   font-size: 20px;
 }
+
+.area {
+  height: 8rem;
+}
+
 button {
   font-size: 20px;
   font-weight: 300;
@@ -152,5 +152,4 @@ button:hover {
     rgba(249, 37, 101, 0.8) 92.71%
   );
 }
-/* Your CSS code here */
 </style>

@@ -1,51 +1,53 @@
 <template>
-  <section id="home" class="container-fluid col-10 p-0" v-if="welcome">
-    <div class="row align-items-center">
-      <div v-if="language === 'sr'" class="col-6 p-0">
-        <div class="welcome_title" v-html="welcome.title.sr"></div>
-        <div class="welcome_text" v-html="welcome.welcome_text.sr"></div>
-        <button class="welcome_button">Saznajte više</button>
-      </div>
-      <div v-if="language === 'hu'" class="col-6 p-0">
-        <div class="welcome_title" v-html="welcome.title.hu"></div>
-        <div class="welcome_text" v-html="welcome.welcome_text.hu"></div>
-        <button class="welcome_button">Tudjon meg többet</button>
-      </div>
-      <div class="col-6 p-0">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img :src="imageOne" class="fixed-height w-100" alt="..." />
+  <div class="row mx-0">
+    <section id="home" class="container-fluid col-10 p-0" v-if="welcome">
+      <div class="row align-items-center">
+        <div v-if="language === 'sr'" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 p-0">
+          <div class="welcome_title" v-html="welcome.title.sr"></div>
+          <div class="welcome_text" v-html="welcome.welcome_text.sr"></div>
+          <button class="welcome_button">Saznajte više</button>
+        </div>
+        <div v-if="language === 'hu'" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 p-0">
+          <div class="welcome_title" v-html="welcome.title.hu"></div>
+          <div class="welcome_text" v-html="welcome.welcome_text.hu"></div>
+          <button class="welcome_button">Tudjon meg többet</button>
+        </div>
+        <div class="col-xl-6 col-sm-12 p-0">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img :src="imageOne" class="fixed-height w-100" alt="..." />
+              </div>
+              <div class="carousel-item">
+                <img :src="imageTwo" class="fixed-height w-100" alt="..." />
+              </div>
             </div>
-            <div class="carousel-item">
-              <img :src="imageTwo" class="fixed-height w-100" alt="..." />
-            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
-    </div>
-  </section>
-  <div class="loading container-fluid col-10 p-0" v-else>
-    <div class="row align-items-center">
-      <h1>Loading...</h1>
+    </section>
+    <div class="loading container-fluid col-10 p-0" v-else>
+      <div class="row align-items-center">
+        <h1>Loading...</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -71,17 +73,10 @@ export default {
 <style scoped>
 section,
 .loading {
-  margin: 130px auto 0;
-  height: 600px;
-}
-.carousel-inner {
-  width: 800px;
-  border-radius: 32px;
+  margin-top: 10%;
 }
 .carousel-item img {
   border-radius: 32px;
-  height: 600px;
-  width: 800px;
 }
 .welcome_title {
   font-size: 56px;

@@ -1,73 +1,79 @@
 <template>
-  <section id="map" class="container-fluid col-10 p-0">
-    <div v-if="bilboards">
-      <div v-if="language === 'sr'" class="row mb-4">
-        <h2 class="text-center">Mapa</h2>
-      </div>
-      <div v-if="language === 'hu'" class="row mb-4">
-        <h2 class="text-center">Térkép</h2>
-      </div>
-      <div class="row map">
-        <div class="map-container col-8">
-          <GoogleMap
-            :api-key="apiKey"
-            :center="bilboardCenter"
-            :zoom="13"
-            :fullscreen-control="false"
-            :style="{
-              width: '100%',
-              height: '500px',
-              borderRadius: '32px',
-              overflow: 'hidden'
-            }"
-          >
-            <MarkerCluster v-if="bilboards">
-              <Marker
-                clickable
-                v-for="bilboard in bilboards"
-                :key="bilboard.id"
-                :options="{
-                  position: { lat: Number(bilboard.latitude), lng: Number(bilboard.longitude) }
-                }"
-              />
-            </MarkerCluster>
-          </GoogleMap>
+  <div class="section-row row mx-0">
+    <section id="map" class="container-fluid col-10 p-0">
+      <div class="row" v-if="bilboards">
+        <div v-if="language === 'sr'" class="row mb-4">
+          <h2 class="text-center">Mapa</h2>
         </div>
-        <div v-if="bilboards" class="bilboard-container col-4">
-          <button class="select-more-btn" @click="selectChange">
-            <p v-if="!selectMore" class="p-0 m-0">
-              <span>
-                {{ language === 'sr' ? 'Izaberite više' : 'Válasszon többet' }}
-              </span>
-              <img src="../../assets/svg/select-more.svg" alt="arrow" />
-            </p>
-            <p v-if="selectMore" class="p-0 m-0">
-              <span>
-                {{ language === 'sr' ? 'Obrišite izbor' : 'Törlés' }}
-              </span>
-              <img src="../../assets/svg/remove-more.svg" alt="arrow" />
-            </p>
-          </button>
-          <div :class="selectMore && 'hidden'" class="scroll">
-            <div v-for="bilboard in bilboards" :key="bilboard.id">
-              <BilboardCard :bilboard="bilboard" />
+        <div v-if="language === 'hu'" class="row mb-4">
+          <h2 class="text-center">Térkép</h2>
+        </div>
+        <div class="row map">
+          <div class="map-container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 p-0">
+            <GoogleMap
+              :api-key="apiKey"
+              :center="bilboardCenter"
+              :zoom="13"
+              :fullscreen-control="false"
+              :style="{
+                width: '100%',
+                height: '500px',
+                borderRadius: '32px',
+                overflow: 'hidden'
+              }"
+            >
+              <MarkerCluster v-if="bilboards">
+                <Marker
+                  clickable
+                  v-for="bilboard in bilboards"
+                  :key="bilboard.id"
+                  :options="{
+                    position: { lat: Number(bilboard.latitude), lng: Number(bilboard.longitude) }
+                  }"
+                />
+              </MarkerCluster>
+            </GoogleMap>
+          </div>
+          <div v-if="bilboards" class="bilboard-container col-12 col-xl-4">
+            <button class="select-more-btn" @click="selectChange">
+              <p v-if="!selectMore" class="p-0 m-0">
+                <span>
+                  {{ language === 'sr' ? 'Izaberite više' : 'Válasszon többet' }}
+                </span>
+                <img src="../../assets/svg/select-more.svg" alt="arrow" />
+              </p>
+              <p v-if="selectMore" class="p-0 m-0">
+                <span>
+                  {{ language === 'sr' ? 'Obrišite izbor' : 'Törlés' }}
+                </span>
+                <img src="../../assets/svg/remove-more.svg" alt="arrow" />
+              </p>
+            </button>
+            <div :class="selectMore && 'hidden'" class="scroll">
+              <div v-for="bilboard in bilboards" :key="bilboard.id">
+                <BilboardCard :bilboard="bilboard" />
+              </div>
+            </div>
+            <a
+              @click="openModal"
+              type="button"
+              data-bs-target="#exampleModal"
+              data-bs-toggle="modal"
+              class="reserve-multiple btn btn-primary w-100"
+              v-if="selectMore"
+              >{{ language === 'sr' ? 'Rezervišite bilborde' : 'Könyv hirdetőtáblák' }}
+              <img src="../../assets/svg/reserve-bilboard.svg" />
+            </a>
+          </div>
+          <div class="loading container-fluid col-10 p-0" v-else>
+            <div class="row align-items-center">
+              <h1>Loading...</h1>
             </div>
           </div>
-          <a
-            @click="openModal"
-            type="button"
-            data-bs-target="#exampleModal"
-            data-bs-toggle="modal"
-            class="reserve-multiple btn btn-primary w-100"
-            v-if="selectMore"
-            >{{ language === 'sr' ? 'Rezervišite bilborde' : 'Könyv hirdetőtáblák' }}
-            <img src="../../assets/svg/reserve-bilboard.svg" />
-          </a>
         </div>
-        <div v-else>loading</div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -99,20 +105,23 @@ export default {
 </script>
 
 <style scoped>
+.section-row {
+  margin-top: 10%;
+}
+
 h2 {
   font-size: 42px;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
 .map {
-  height: 610px;
   padding: 36px;
   background-image: linear-gradient(90deg, #02020f00, hsla(240, 76%, 3%, 0.75));
   border-radius: 32px;
 }
 
 .bilboard-container {
-  height: 500px;
+  height: 100%;
 }
 
 .select-more-btn {

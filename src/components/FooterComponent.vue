@@ -1,5 +1,5 @@
 <template>
-  <footer class="container-fluid">
+  <footer class="section-row container-fluid p-5">
     <div v-if="footerData" class="row justify-content-center align-items-center">
       <div class="col-3 text-center">
         <a>
@@ -51,6 +51,9 @@ export default {
 </script>
 
 <style scoped>
+.section-row {
+  margin-top: 20%;
+}
 footer {
   width: 100%;
   color: white;

@@ -22,9 +22,10 @@ export default {
   top: 0;
   position: absolute;
   width: 100%;
-  height: 435%;
+  height: 100%;
   background-color: #02020f;
   overflow: hidden;
+  z-index: -1;
 }
 
 /* referent red circle */
@@ -32,39 +33,40 @@ export default {
   position: absolute;
   width: 1200px;
   height: 1200px;
-  top: -600px;
-  left: -840px;
-  background-image: radial-gradient(circle, #e8054ca1 8em, transparent 30rem);
+  top: -17%;
+  left: -44%;
+  background-image: radial-gradient(circle, #e8054d86 8em, transparent 30rem);
 }
 
 .circle-red.two {
-  top: 1600px;
-  left: -740px;
+  top: 34%;
+  left: -42%;
+  background-image: radial-gradient(circle, #e8054db2 8em, transparent 34rem);
 }
 
 .circle-red.three {
-  top: 3750px;
-  left: 1100px;
-  background-image: radial-gradient(circle, #e8054d81, transparent 30rem);
+  top: 88%;
+  left: 56%;
+  background-image: radial-gradient(circle, #e8054d77, transparent 30rem);
 }
 
 /* referent blue circle */
 .circle-blue {
   position: absolute;
-  width: 1600px;
-  height: 1600px;
-  top: 200px;
-  right: -1000px;
-  background-image: radial-gradient(circle, #3badff 12rem, transparent 45rem);
+  width: 1500px;
+  height: 1500px;
+  top: 7%;
+  left: 70%;
+  background-image: radial-gradient(circle, #3badff 10rem, transparent 45rem);
 }
 .circle-blue.two {
-  top: 2200px;
-  right: -1200px;
-  background-image: radial-gradient(circle, #3badffe1, transparent 45rem);
+  top: 48%;
+  left: 84%;
+  background-image: radial-gradient(circle, #3badff 4rem, transparent 46rem);
 }
 .circle-blue.three {
-  top: 3600px;
-  left: -1200px;
-  background-image: radial-gradient(circle, #3badff5d, transparent 45rem);
+  top: 80%;
+  left: -64%;
+  background-image: radial-gradient(circle, #3badff49, transparent 45rem);
 }
 </style>

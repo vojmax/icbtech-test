@@ -4,30 +4,23 @@
     class="card mb-3 p-3"
     style="max-width: 488px; max-height: 154px"
   >
-    <div class="row g-0">
-      <div class="col-4">
+    <div class="row">
+      <div class="col-md-4">
         <div class="image-container" v-if="bilboard.photo_name != null">
-          <img :src="imgUrl + bilboard.photo_name" alt="bilboard" />
+          <img class="img-fluid" :src="imgUrl + bilboard.photo_name" alt="bilboard" />
         </div>
         <div v-else>
-          <img class="image-container" src="../../assets/no-image.jpg" />
+          <img class="image-container img-fluid" src="../../assets/no-image.jpg" />
         </div>
       </div>
-      <div class="col-8">
-        <div class="card-body p-0">
+      <div class="col-md-8">
+        <div class="card-body text-truncate p-0">
           <div class="d-flex justify-content-between">
             <span class="card-title p-0">{{
               language === 'sr' ? bilboard.name.sr : bilboard.name.hu
             }}</span>
-            <input
-              v-if="selectMore"
-              class="checkbox"
-              v-model="selectedBilboards"
-              :value="bilboard.id"
-              type="checkbox"
-            />
           </div>
-          <p class="card-text m-0">
+          <p class="card-text text-truncate m-0">
             {{ language === 'sr' ? bilboard.description.sr : bilboard.description.hu }}
           </p>
           <p class="card-text text-truncate m-0 p-0">
@@ -40,6 +33,15 @@
           <a @click="openModal" v-if="!selectMore" class="btn btn-primary mt-2">{{
             language === 'sr' ? 'Rezervišite bilbord' : 'Foglaljon hirdetőtáblát'
           }}</a>
+          <div v-else>
+            <input
+              v-if="selectMore"
+              class="checkbox"
+              v-model="selectedBilboards"
+              :value="bilboard.id"
+              type="checkbox"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -133,9 +135,9 @@ export default {
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  margin-top: 15px 0 0 0;
+  width: 30px;
+  height: 30px;
+  margin-top: 20px 0 0 0;
   padding: 0;
   border-radius: 4px;
   background-color: rgba(60, 173, 255, 1);
