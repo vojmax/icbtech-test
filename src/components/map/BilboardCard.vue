@@ -6,7 +6,7 @@
   >
     <div class="row">
       <div class="col-md-4">
-        <div class="image-container" v-if="bilboard.photo_name != null">
+        <div class="image-container" v-if="bilboard.photo_name">
           <img class="img-fluid" :src="imgUrl + bilboard.photo_name" alt="bilboard" />
         </div>
         <div v-else>

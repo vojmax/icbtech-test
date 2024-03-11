@@ -34,7 +34,7 @@
             <input required v-model="email" class="row" type="email" placeholder="Email cím" />
             <input required v-model="message" class="row area" type="area" placeholder="Üzenet" />
             <div class="d-flex flex-row-reverse">
-              <button class="flex-end">Küldés</button>
+              <button>Küldés</button>
             </div>
           </form>
         </div>

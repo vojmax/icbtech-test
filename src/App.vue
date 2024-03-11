@@ -6,7 +6,7 @@ import AboutComponent from './components/AboutComponent.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import FooterComponent from './components/FooterComponent.vue'
 import BackgroundComponent from './components/BackgroundComponent.vue'
-import BilboardModal from './components/BilboardModal.vue'
+import BilboardModal from './components/map/BilboardModal.vue'
 </script>
 
 <template>
@@ -23,3 +23,4 @@ import BilboardModal from './components/BilboardModal.vue'
 </template>
 
 <style scoped></style>
+./components/map/BilboardModal.vue
