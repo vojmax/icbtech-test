@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .section-row {
-  margin-top: 10%;
+  margin-top: 14%;
 }
 h2 {
   font-size: 42px;
