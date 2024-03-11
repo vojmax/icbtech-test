@@ -20,7 +20,14 @@
           ></button>
         </div>
         <div class="modal-body">
-          <div class="row">
+          <div v-if="showVideo" class="row">
+            <a class="mb-2" type="button" @click="showVideo = false">
+              <img src="../../assets/svg/back-icon.svg" />
+              Back</a
+            >
+            <div v-html="oneBilboard.video_link"></div>
+          </div>
+          <div v-if="!showVideo" class="row">
             <div class="col-4">
               <div class="image-container" v-if="oneBilboard.photo_name != null">
                 <img class="img-fluid" :src="imgUrl + oneBilboard.photo_name" alt="bilboard" />
@@ -33,9 +40,12 @@
               <p>
                 {{ language === 'sr' ? oneBilboard.description.sr : oneBilboard.description.hu }}
               </p>
-              <button class="btn btn-primary w-100">
-                Pogledaj video <img src="../../assets/svg/play-video.svg" />
-              </button>
+              <div v-if="oneBilboard.video_link">
+                <button @click="showVideo = true" class="btn btn-primary w-100">
+                  {{ language === 'sr' ? 'Pogledaj video' : 'Videó megtekintése' }}
+                  <img src="../../assets/svg/play-video.svg" />
+                </button>
+              </div>
             </div>
             <div class="container-fluid col-8">
               <BilboardForm :billboard_id="oneBilboard.id" />
@@ -59,6 +69,7 @@ import BilboardForm from './BilboardForm.vue'
 import { useMapStore } from '@/store/MapStore'
 import { useLangStore } from '@/store/LangStore'
 import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
 export default {
   name: 'BilboardModal',
@@ -66,6 +77,7 @@ export default {
     BilboardForm
   },
   setup() {
+    const showVideo = ref(false)
     const { language } = storeToRefs(useLangStore())
     const { oneBilboard } = storeToRefs(useMapStore())
     const imgUrl = 'https://ledbilbordi.web.icbtech.net/storage/'
@@ -73,13 +85,19 @@ export default {
     return {
       language,
       oneBilboard,
-      imgUrl
+      imgUrl,
+      showVideo
     }
   }
 }
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+  color: black;
+}
+
 img {
   object-fit: cover;
   max-width: 360px;
@@ -107,10 +125,13 @@ h6 {
   color: rgba(17, 17, 17, 1);
 }
 
-button {
+.btn {
   background-color: rgba(34, 48, 142, 1);
   padding: 1em;
   font-size: 16px;
   font-weight: 400;
+}
+.btn:hover {
+  background-color: rgba(0, 30, 226, 0.8);
 }
 </style>

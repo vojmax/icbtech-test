@@ -29,12 +29,24 @@
       </div>
     </form>
     <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
-      <input required v-model="name" class="row" type="text" placeholder="Teljes név" />
-      <input required v-model="email" class="row" type="email" placeholder="Email cím" />
-      <input required v-model="message" class="row area" type="area" placeholder="Üzenet" />
+      <div class="row mb-3 mx-0">
+        <input required v-model="name" type="text" placeholder="Teljes név" />
+      </div>
+      <div class="row mb-3 mx-0">
+        <input required v-model="company_name" type="text" placeholder="Cég neve" />
+      </div>
+      <div class="row mb-3 mx-0">
+        <input required v-model="phone_number" type="text" placeholder="Telefonszám" />
+      </div>
+      <div class="row mb-3 mx-0">
+        <input required v-model="email" type="email" placeholder="Email cím" />
+      </div>
       <p style="color: red" v-if="error">{{ error }}</p>
       <div class="d-flex flex-row-reverse">
-        <button class="flex-end">Küldés</button>
+        <button class="btn btn-danger">
+          Küldés
+          <img src="../../assets/svg/send-icon.svg" />
+        </button>
       </div>
     </form>
   </div>
