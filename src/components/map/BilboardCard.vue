@@ -30,18 +30,24 @@
             <span> • </span>
             <span class="address">{{ bilboard.address }}</span>
           </p>
-          <a @click="openModal" v-if="!selectMore" class="btn btn-primary mt-2">{{
-            language === 'sr' ? 'Rezervišite bilbord' : 'Foglaljon hirdetőtáblát'
-          }}</a>
-          <div v-else>
-            <input
-              v-if="selectMore"
-              class="checkbox"
-              v-model="selectedBilboards"
-              :value="bilboard.id"
-              type="checkbox"
-            />
-          </div>
+          <button
+            v-if="!selectMore"
+            @click="openModal(bilboard.id)"
+            type="button"
+            data-bs-target="#exampleModal"
+            data-bs-toggle="modal"
+            class="btn btn-primary mt-2"
+          >
+            {{ language === 'sr' ? 'Rezervišite bilbord' : 'Foglaljon hirdetőtáblát' }}
+          </button>
+
+          <input
+            v-else
+            class="checkbox"
+            v-model="selectedBilboards"
+            :value="bilboard.id"
+            type="checkbox"
+          />
         </div>
       </div>
     </div>
@@ -63,11 +69,10 @@ export default {
       required: true
     }
   },
-  emits: ['update:bilboardArray'],
 
   setup() {
     const { selectedBilboards, selectMore, bilboardCenter } = storeToRefs(useMapStore())
-
+    const { openModal } = useMapStore()
     const { language } = storeToRefs(useLangStore())
     const imgUrl = 'https://ledbilbordi.web.icbtech.net/storage/'
     const { imageTwo } = storeToRefs(useHeroStore())
@@ -85,7 +90,8 @@ export default {
       language,
       selectMore,
       selectedBilboards,
-      setMapCenter
+      setMapCenter,
+      openModal
     }
   }
 }

@@ -6,10 +6,12 @@ import AboutComponent from './components/AboutComponent.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import FooterComponent from './components/FooterComponent.vue'
 import BackgroundComponent from './components/BackgroundComponent.vue'
+import BilboardModal from './components/BilboardModal.vue'
 </script>
 
 <template>
   <main>
+    <BilboardModal />
     <NavBar />
     <HeroComponent />
     <MapComponent />

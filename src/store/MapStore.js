@@ -6,6 +6,7 @@ export const useMapStore = defineStore('MapStore', () => {
   const { selectedCity } = storeToRefs(useCitiesStore()) // useCitiesStore() returns the store instance
   const bilboards = ref([]) // reactive bilboards array
   const selectMore = ref(false) // reactive selectMore flag
+  const oneBilboard = ref({})
   const selectedBilboards = ref([]) // array of checked bilboards ids
   const filterBilboardsById = ref([]) // reactive filterBilboardsById object
   const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 }) // reactive bilboardCenter object with default value
@@ -24,6 +25,15 @@ export const useMapStore = defineStore('MapStore', () => {
     } // set center to first bilboard location whenever city in nav changes
     console.log('bilboardCenter changed:', bilboardCenter.value)
   })
+
+  const openModal = (id) => {
+    oneBilboard.value = bilboards.value.find((bilboard) => bilboard.id === id)
+    if (oneBilboard.value) {
+      console.log(oneBilboard)
+    } else {
+      console.log('Bilboard not found')
+    }
+  }
 
   watch(selectMore, () => {
     console.log('selectMore changed:', selectMore.value)
@@ -54,6 +64,8 @@ export const useMapStore = defineStore('MapStore', () => {
     selectedBilboards,
     selectMore,
     bilboardCenter,
-    filterBilboardsById
+    filterBilboardsById,
+    oneBilboard,
+    openModal
   }
 })
