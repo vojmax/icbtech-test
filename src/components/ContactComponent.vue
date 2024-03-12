@@ -33,6 +33,7 @@
             <input required v-model="name" class="row" type="text" placeholder="Teljes név" />
             <input required v-model="email" class="row" type="email" placeholder="Email cím" />
             <input required v-model="message" class="row area" type="area" placeholder="Üzenet" />
+            <p style="color: red" v-if="error">{{ error }}</p>
             <div class="d-flex flex-row-reverse">
               <button>Küldés</button>
             </div>

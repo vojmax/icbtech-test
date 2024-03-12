@@ -54,6 +54,7 @@
 
 <script>
 import { useLangStore } from '@/store/LangStore'
+import { useMapStore } from '@/store/MapStore'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
@@ -65,7 +66,7 @@ export default {
     }
   },
 
-  setup() {
+  setup(props) {
     const name = ref('') // name input value
     const company_name = ref('') // message input value
     const phone_number = ref('') // message input value
@@ -73,11 +74,25 @@ export default {
     const email = ref('') // email input value
 
     const { language } = storeToRefs(useLangStore())
+    const { filterBilboardsById } = storeToRefs(useMapStore())
 
     function handleSubmit() {
-      console.log(
-        `{name:${name.value},email:${email.value},company_name:${company_name.value},locale:${language.value},billboard_id:${this.billboard_id}}`
-      )
+      const ids = filterBilboardsById.value.map((bilboard) => bilboard.id)
+      console.log(ids)
+
+      if (props.billboard_id) {
+        console.log(
+          JSON.parse(
+            `{"name":"${name.value}","email":"${email.value}","company_name":"${company_name.value}","locale":"${language.value}","billboard_id":"[${props.billboard_id}]"}`
+          )
+        )
+      } else {
+        console.log(
+          JSON.parse(
+            `{"name":"${name.value}","email":"${email.value}","company_name":"${company_name.value}","locale":"${language.value}","billboard_id":"[${ids}]"}`
+          )
+        )
+      }
     }
     return { handleSubmit, name, email, phone_number, company_name, error, language }
   }
