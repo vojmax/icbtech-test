@@ -22,7 +22,7 @@
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
       <div class="d-flex flex-row-reverse mt-5">
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
           Pošalji zahtev
           <img src="../../assets/svg/send-icon.svg" />
         </button>
@@ -43,7 +43,7 @@
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
       <div class="d-flex flex-row-reverse mt-5">
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
           Küldés
           <img src="../../assets/svg/send-icon.svg" />
         </button>
@@ -78,7 +78,6 @@ export default {
 
     function handleSubmit() {
       const ids = filterBilboardsById.value.map((bilboard) => bilboard.id)
-      console.log(ids)
 
       if (props.billboard_id) {
         console.log(
