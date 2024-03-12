@@ -11,6 +11,8 @@ export const useMapStore = defineStore('MapStore', () => {
   const selectedBilboards = ref([]) // array of checked bilboards ids
   const filterBilboardsById = ref([]) // reactive filterBilboardsById object
   const bilboardCenter = ref({ lat: 46.10078231214396, lng: 19.66944742489657 }) // reactive bilboardCenter object with default value
+  const showVideo = ref(false)
+  const videoLink = ref('')
 
   watch(selectedBilboards, () => {
     filterBilboardsById.value = allBilboards.value.filter((bilboard) =>
@@ -85,12 +87,14 @@ export const useMapStore = defineStore('MapStore', () => {
     updateAllBilboards()
   })
   return {
+    showVideo,
     bilboards,
     selectedBilboards,
     selectMore,
     bilboardCenter,
     filterBilboardsById,
     oneBilboard,
+    videoLink,
     openModal
   }
 })

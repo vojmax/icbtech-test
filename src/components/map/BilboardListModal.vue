@@ -7,7 +7,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div v-if="filterBilboardsById" class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="bilboardListModalLabel">
             {{ language === 'sr' ? 'Lista bilborda' : 'A hirdetőtáblák listája' }}
@@ -25,6 +25,7 @@
               <img src="../../assets/svg/back-icon.svg" />
               Back</a
             >
+            <div v-html="videoLink"></div>
           </div>
           <div v-if="!showVideo" class="row">
             <div class="col-4">
@@ -40,13 +41,13 @@
           </div>
         </div>
       </div>
-      <!-- <div class="modal-content" v-else>
+      <div class="modal-content" v-else>
         <div class="modal-body">
           <div class="row">
             <h1>Loading...</h1>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -58,7 +59,6 @@ import { useLangStore } from '@/store/LangStore'
 import { storeToRefs } from 'pinia'
 
 import { useMapStore } from '@/store/MapStore'
-import { ref } from 'vue'
 
 export default {
   name: 'BilboardListModal',
@@ -69,13 +69,13 @@ export default {
 
   setup() {
     const { language } = storeToRefs(useLangStore())
-    const { filterBilboardsById } = storeToRefs(useMapStore())
+    const { filterBilboardsById, showVideo, videoLink } = storeToRefs(useMapStore())
 
-    const showVideo = ref(false)
     return {
       language,
       showVideo,
-      filterBilboardsById
+      filterBilboardsById,
+      videoLink
     }
   }
 }

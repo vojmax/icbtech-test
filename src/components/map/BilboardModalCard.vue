@@ -18,7 +18,7 @@
           <p class="city-name mb-0">
             {{ language === 'sr' ? bilboard.city_name.sr : bilboard.city_name.hu }}
           </p>
-          <a v-if="bilboard.video_link" @click="showVideo = true">
+          <a v-if="bilboard.video_link" @click="handleClick(bilboard.video_link)">
             <p class="mb-0">
               {{ language === 'sr' ? 'Pogledaj video' : 'Videó megtekintése' }}
               <img src="../../assets/svg/play-video-dark.svg" />
@@ -32,6 +32,7 @@
 
 <script>
 import { useLangStore } from '@/store/LangStore'
+import { useMapStore } from '@/store/MapStore'
 import { storeToRefs } from 'pinia'
 
 export default {
@@ -46,11 +47,19 @@ export default {
 
   setup() {
     const { language } = storeToRefs(useLangStore())
+    const { showVideo, videoLink } = storeToRefs(useMapStore())
     const imgUrl = 'https://ledbilbordi.web.icbtech.net/storage/'
+
+    const handleClick = (link) => {
+      showVideo.value = true
+      videoLink.value = link
+    }
 
     return {
       imgUrl,
-      language
+      language,
+      showVideo,
+      handleClick
     }
   }
 }
