@@ -57,7 +57,7 @@
             <button
               :disabled="selectedBilboards.length < 1"
               type="button"
-              data-bs-target="#exampleModal"
+              data-bs-target="#bilboardListModal"
               data-bs-toggle="modal"
               class="reserve-multiple btn btn-primary w-100"
               v-if="selectMore"

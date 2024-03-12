@@ -8,20 +8,20 @@
       </p>
     </div>
     <form @submit.prevent="handleSubmit" v-if="language === 'sr'">
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="name" type="text" placeholder="Ime i prezime" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="company_name" type="text" placeholder="Ime kompanije" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="phone_number" type="text" placeholder="Broj telefona" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="email" type="email" placeholder="Email adresa" />
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
-      <div class="d-flex flex-row-reverse">
+      <div class="d-flex flex-row-reverse mt-5">
         <button class="btn btn-danger">
           Pošalji zahtev
           <img src="../../assets/svg/send-icon.svg" />
@@ -29,16 +29,16 @@
       </div>
     </form>
     <form @submit.prevent="handleSubmit" v-if="language === 'hu'">
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="name" type="text" placeholder="Teljes név" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="company_name" type="text" placeholder="Cég neve" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="phone_number" type="text" placeholder="Telefonszám" />
       </div>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-2 mx-0">
         <input required v-model="email" type="email" placeholder="Email cím" />
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
@@ -61,8 +61,7 @@ export default {
   name: 'BilboardForm',
   props: {
     billboard_id: {
-      type: Number,
-      required: true
+      type: Number
     }
   },
 

@@ -34,7 +34,7 @@
             v-if="!selectMore"
             @click="openModal(bilboard.id)"
             type="button"
-            data-bs-target="#exampleModal"
+            data-bs-target="#bilboardModal"
             data-bs-toggle="modal"
             class="btn btn-primary mt-2"
           >
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import { useHeroStore } from '@/store/HeroStore'
 import { useLangStore } from '@/store/LangStore'
 import { useMapStore } from '@/store/MapStore'
 import { storeToRefs } from 'pinia'
@@ -75,7 +74,6 @@ export default {
     const { openModal } = useMapStore()
     const { language } = storeToRefs(useLangStore())
     const imgUrl = 'https://ledbilbordi.web.icbtech.net/storage/'
-    const { imageTwo } = storeToRefs(useHeroStore())
 
     const setMapCenter = (lat, lng) => {
       bilboardCenter.value = {
@@ -86,7 +84,6 @@ export default {
 
     return {
       imgUrl,
-      imageTwo,
       language,
       selectMore,
       selectedBilboards,

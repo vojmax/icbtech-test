@@ -7,11 +7,13 @@ import ContactComponent from './components/ContactComponent.vue'
 import FooterComponent from './components/FooterComponent.vue'
 import BackgroundComponent from './components/BackgroundComponent.vue'
 import BilboardModal from './components/map/BilboardModal.vue'
+import BilboardListModal from './components/map/BilboardListModal.vue'
 </script>
 
 <template>
   <main>
     <BilboardModal />
+    <BilboardListModal />
     <NavBar />
     <HeroComponent />
     <MapComponent />
@@ -23,4 +25,3 @@ import BilboardModal from './components/map/BilboardModal.vue'
 </template>
 
 <style scoped></style>
-./components/map/BilboardModal.vue

@@ -1,7 +1,7 @@
 <template>
   <div
     class="modal fade modal-lg"
-    id="exampleModal"
+    id="bilboardModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -43,7 +43,7 @@
               <div v-if="oneBilboard.video_link">
                 <button @click="showVideo = true" class="btn btn-primary w-100">
                   {{ language === 'sr' ? 'Pogledaj video' : 'Videó megtekintése' }}
-                  <img src="../../assets/svg/play-video.svg" />
+                  <img src="../../assets/svg/play-video-light.svg" />
                 </button>
               </div>
             </div>
