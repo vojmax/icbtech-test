@@ -82,6 +82,11 @@ export default {
 </script>
 
 <style scoped>
+.scroll {
+  max-height: 460px;
+  overflow: auto;
+  padding-right: 1em;
+}
 p {
   font-size: 1rem;
   font-weight: 300;
@@ -106,5 +111,25 @@ input {
 .btn img {
   width: 24px;
   margin-left: 0.5em;
+}
+/* scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid rgba(136, 136, 136, 1);
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 48, 142, 1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(79, 92, 179);
+  cursor: pointer;
 }
 </style>

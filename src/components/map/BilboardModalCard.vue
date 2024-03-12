@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
 .card {
-  background-color: #f0f0f099;
+  background-color: #f0f0f0;
   border-radius: 8px;
   color: white;
   border: 1px solid #888888;

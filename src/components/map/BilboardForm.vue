@@ -42,7 +42,7 @@
         <input required v-model="email" type="email" placeholder="Email cím" />
       </div>
       <p style="color: red" v-if="error">{{ error }}</p>
-      <div class="d-flex flex-row-reverse">
+      <div class="d-flex flex-row-reverse mt-5">
         <button class="btn btn-danger">
           Küldés
           <img src="../../assets/svg/send-icon.svg" />
